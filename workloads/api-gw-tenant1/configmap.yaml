@@ -58,7 +58,7 @@ data:
                   - Method=POST
                   filters:
                   - SecurityAbc=säkerhet för _POST_ operation på informationsmängd _delay_, true, true
-                  - SetRequestAuthHeader=Authorization, true, true
+                  #- SetRequestAuthHeader=Authorization, true, true
                   - Logging=audit för _POST_ operation på informationsmäng _delay_, true, true
 kind: ConfigMap
 metadata:
