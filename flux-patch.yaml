@@ -1,0 +1,17 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    flux.weave.works/automated: "true"
+    flux.weave.works/tag.api-gw: semver:~0.0
+  name: api-gw-tenant1
+  namespace: team0-api-gw
+spec:
+  template:
+    spec:
+      $setElementOrder/containers:
+      - name: api-gw
+      containers:
+      - image: sadhal/api-gw:0.0.1
+        name: api-gw
