@@ -63,7 +63,7 @@ spec:
       volumes:
         - name: application-config
           configMap:
-            name: api-gw-tenant-1
+            name: api-gw-tenant1
             items:
             - key: application-routes.yml
               path: application-routes.yml
