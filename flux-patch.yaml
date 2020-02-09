@@ -13,5 +13,5 @@ spec:
       $setElementOrder/containers:
       - name: api-gw
       containers:
-      - image: sadhal/api-gw:0.0.1
+      - image: sadhal/api-gw:0.0.2
         name: api-gw
