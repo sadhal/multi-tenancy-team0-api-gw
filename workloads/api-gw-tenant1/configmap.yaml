@@ -12,8 +12,6 @@ data:
                   - Path=/get
                   filters:
                   - AddRequestHeader=X-Request-red, blue
-                  - Logging=audit för informationsmängd _get_, true, true
-
 
                 - id: auditable_route_1a_coarse_granularity
                   uri: https://httpbin.org/
