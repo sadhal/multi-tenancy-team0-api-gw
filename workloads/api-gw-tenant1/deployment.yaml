@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: api-gw
-          image: sadhal/api-gw:0.0.1
+          image: sadhal/api-gw:0.0.2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
