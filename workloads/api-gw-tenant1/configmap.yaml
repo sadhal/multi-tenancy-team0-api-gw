@@ -15,15 +15,27 @@ data:
                   - Logging=audit för informationsmängd _get_, true, true
 
 
-                - id: auditable_route_1_coarse_granularity
+                - id: auditable_route_1a_coarse_granularity
                   uri: https://httpbin.org/
                   predicates:
                   - Path=/anything/{segment}
+                  - Method=POST
                   filters:
                   - AddRequestHeader=X-Request-red, blue
                   - SecurityAbc=säkerhet för _GET_ operation på informationsmängd _anything_, true, true
                   - SetRequestAuthHeader=Authorization, true, true
-                  - Logging=audit för informationsmängd _anything_, true, true
+                  - LoggingWithBody=application/json, application/json, false, false
+
+                - id: auditable_route_1b_coarse_granularity
+                  uri: https://httpbin.org/
+                  predicates:
+                  - Path=/anything/{segment}
+                  - Method=GET
+                  filters:
+                  - AddRequestHeader=X-Request-red, blue
+                  - SecurityAbc=säkerhet för _GET_ operation på informationsmängd _anything_, true, true
+                  - SetRequestAuthHeader=Authorization, true, true
+                  - LoggingNoBody=application/json, false
 
                 # https://cloud.spring.io/spring-cloud-gateway/reference/html/#the-path-route-predicate-factory
                 - id: auditable_route_2_fine_granularity
@@ -34,7 +46,7 @@ data:
                   filters:
                   - SecurityAbc=säkerhet för _GET_ operation på informationsmängd _uuid_, true, true
                   - SetRequestAuthHeader=Authorization, true, true
-                  - Logging=audit för _GET_ operation på informationsmäng _uuid_, true, true
+                  - LoggingNoBody=application/json, false
 
                 - id: auditable_route_3_with_circuit_breaker
                   uri: https://httpbin.org/
@@ -44,7 +56,7 @@ data:
                   filters:
                   - SecurityAbc=säkerhet för _GET_ operation på informationsmängd _delay_, true, true
                   - SetRequestAuthHeader=Authorization, true, true
-                  - Logging=audit för _GET_ operation på informationsmäng _delay_, true, true
+                  - LoggingNoBody=application/json, false
                   - name: CircuitBreaker
                     args:
                         name: myCircuitBreaker
@@ -56,12 +68,23 @@ data:
                   predicates:
                   - Path=/delay/{segment}
                   - Method=POST
+                  - Header=User-group, \w*blue
                   filters:
                   - SecurityAbc=säkerhet för _POST_ operation på informationsmängd _delay_, true, true
-                  #- SetRequestAuthHeader=Authorization, true, true
-                  - Logging=audit för _POST_ operation på informationsmäng _delay_, true, true
+                  - SetRequestAuthHeader=Authorization, true, true
+                  - LoggingWithBody=application/json, application/json, false, false
+
+                - id: auditable_route_4_body_logging
+                  uri: https://httpbin.org/
+                  predicates:
+                  - Path=/delay/{segment}
+                  - Method=POST
+                  filters:
+                  - SecurityAbc=säkerhet för _POST_ operation på informationsmängd _delay_, true, true
+                  - SetRequestAuthHeader=Authorization, true, true
+                  - LoggingWithBody=application/json, application/json, false, false
 kind: ConfigMap
 metadata:
   labels:
-    app: api-gw-tenant1
-  name: api-gw-tenant1
+    app: api-gw-cluster-tenant-1
+  name: api-gw-cluster-tenant-1
