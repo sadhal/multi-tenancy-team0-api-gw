@@ -5,8 +5,8 @@ metadata:
   annotations:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.api-gw: semver:~0.0
-  name: api-gw-tenant1
-  namespace: team0-api-gw
+  name: api-gw-subtenant-1
+  namespace: subtenant-1-namespace-2
 spec:
   template:
     spec:
