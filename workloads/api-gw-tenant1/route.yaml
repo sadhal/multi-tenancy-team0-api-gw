@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/instance: api-gw-subtenant-1
   name: api-gw-subtenant-1
 spec:
-  #host: api-gw-tenant1-team0-api-gw.apps-crc.testing
+  host: api-gw-subtenant-1-subtenant-1-namespace-2.apps-crc.testing
   port:
     targetPort: 8080
   subdomain: ""
