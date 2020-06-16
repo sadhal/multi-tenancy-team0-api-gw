@@ -1,4 +1,4 @@
-namespace: team0-api-gw
+namespace: subtenant-1-namespace-2
 bases:
   - ./workloads/api-gw-tenant1/
 #  - ./workloads/api-gw-tenant2/
