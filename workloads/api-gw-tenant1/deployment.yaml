@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-gw-tenant1
+  name: api-gw-subtenant-1
   labels:
-    app: api-gw-tenant1
+    app: api-gw-subtenant-1
 spec:
   minReadySeconds: 5
   revisionHistoryLimit: 5
@@ -14,13 +14,13 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: api-gw-tenant1
+      app: api-gw-subtenant-1
   template:
     metadata:
       annotations:
         prometheus.io/scrape: "true"
       labels:
-        app: api-gw-tenant1
+        app: api-gw-subtenant-1
     spec:
       containers:
         - name: api-gw
@@ -63,7 +63,7 @@ spec:
       volumes:
         - name: application-config
           configMap:
-            name: api-gw-tenant1
+            name: api-gw-subtenant-1
             items:
             - key: application-routes.yml
               path: application-routes.yml
