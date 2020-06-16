@@ -84,5 +84,5 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    app: api-gw-tenant1
-  name: api-gw-tenant1
+    app: api-gw-subtenant-1
+  name: api-gw-subtenant-1
