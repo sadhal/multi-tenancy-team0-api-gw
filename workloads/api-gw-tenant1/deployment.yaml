@@ -5,7 +5,7 @@ metadata:
   labels:
     app: api-gw-subtenant-1
 spec:
-  replicas: 
+  replicas: 1
   minReadySeconds: 5
   revisionHistoryLimit: 5
   progressDeadlineSeconds: 60
